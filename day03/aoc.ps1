@@ -3,8 +3,8 @@ function Get-AdjacentPositions {
     [int]$x,
     [int]$y
   )
-  $r = for ($dx = [math]::Max(0, $x-1); $dx -le [math]::Min(139, $x+1); $dx++) {
-    for ($dy = [math]::Max(0, $y-1); $dy -le [math]::Min(139, $y+1); $dy++) {
+  $r = for ($dx = [math]::Max(0, $x - 1); $dx -le [math]::Min(139, $x + 1); $dx++) {
+    for ($dy = [math]::Max(0, $y - 1); $dy -le [math]::Min(139, $y + 1); $dy++) {
       Get-Position -x $dx -y $dy
     }
   }
@@ -52,7 +52,8 @@ if ($part -eq "part1") {
     }
   }
   Write-Host $result
-} elseif ($part -eq "part2") {
+}
+elseif ($part -eq "part2") {
   $result = [bigint]0
   $numbers = @{}
   for ($y = 0; $y -lt 140; $y++) {
