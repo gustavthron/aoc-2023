@@ -93,19 +93,6 @@ function Get-DestinationValue {
   return $SourceValue
 }
 
-function Get-DestinationRanges {
-  param (
-    [bigint]$SourceStartValue,
-    [CategoryMap]$CategoryMap
-  )
-  foreach ($CategoryMapRange in $CategoryMap.CategoryMapRanges) {
-    if ($SourceValue -ge $CategoryMapRange.SourceStart -and $SourceValue -lt $CategoryMapRange.SourceStart + $CategoryMapRange.Length) {
-      return $CategoryMapRange.DestinationStart + $SourceValue - $CategoryMapRange.SourceStart
-    }
-  }
-  return $SourceValue
-}
-
 function Invoke-Part1Solution {
   param (
     [Almanac]$Almanac
@@ -127,7 +114,6 @@ function Invoke-Part2Solution {
   param (
     [Almanac]$Almanac
   )
-  $LowestLocationNumber = $null
   $Ranges = $Almanac.SeedRanges
   foreach ($CategoryMap in $Almanac.CategoryMaps) {
     for ($i = 0; $i -lt $Ranges.Length; $i++) {
